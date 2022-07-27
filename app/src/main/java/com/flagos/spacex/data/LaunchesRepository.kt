@@ -9,6 +9,8 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
+private const val NUMBER_OF_ITEMS = 20
+
 class LaunchesRepository @Inject constructor(
     private val launchesClient: LaunchesClient,
     private val ioDispatcher: CoroutineDispatcher
@@ -18,9 +20,8 @@ class LaunchesRepository @Inject constructor(
     fun fetchLaunches(onStart: () -> Unit, onComplete: () -> Unit, onError: (String?) -> Unit) = flow {
         launchesClient.fetchLaunches()
             .suspendOnSuccess {
-                emit(data)
-            }
-            .onFailure {
+                emit(data.sortedByDescending { it.dateInUnix }.take(NUMBER_OF_ITEMS))
+            }.onFailure {
                 onError(message())
             }
     }.onStart {
