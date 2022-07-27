@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">spacex-android</string>
+    <string name="app_name">Spacex Launches</string>
     <string name="flight_number">Flight %d</string>
     <string name="rocket_name">Rocket %s</string>
     <string name="rocket_type">Type %s</string>
