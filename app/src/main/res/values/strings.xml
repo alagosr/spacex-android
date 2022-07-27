@@ -3,4 +3,6 @@
     <string name="flight_number">Flight %d</string>
     <string name="rocket_name">Rocket %s</string>
     <string name="rocket_type">Type %s</string>
+    <string name="text_error">An error has occurred\n\n%s</string>
+    <string name="text_empty">There are no results</string>
 </resources>

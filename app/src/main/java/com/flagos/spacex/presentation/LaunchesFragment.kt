@@ -4,12 +4,16 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
+import com.flagos.spacex.R
 import com.flagos.spacex.databinding.FragmentLaunchesBinding
 import com.flagos.spacex.domain.LaunchItem
+import com.flagos.spacex.presentation.LaunchesViewModel.LaunchState
+import com.flagos.spacex.presentation.LaunchesViewModel.LaunchState.*
 import com.flagos.spacex.presentation.adapter.LaunchesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -50,17 +54,51 @@ class LaunchesFragment : Fragment() {
     }
 
     private fun initObservers() {
-        viewModel.fetchLaunches()
-        viewModel.onLaunchStateChanged.observe(viewLifecycleOwner, { setUiState(it) })
+        viewModel.onLaunchStateChanged.observe(viewLifecycleOwner) { setUiState(it) }
     }
 
-    private fun setUiState(state: LaunchesViewModel.LaunchState) {
+    private fun setUiState(state: LaunchState) {
         when (state) {
-            is LaunchesViewModel.LaunchState.OnListRetrieved -> setSuccessfulUi(state.list)
+            is OnListRetrieved -> setSuccessfulState(state.list)
+            is OnLoading -> setLoadingState(state.loading)
+            is OnError -> setErrorState(state.error)
+            OnEmptyList -> setEmptyState()
         }
     }
 
-    private fun setSuccessfulUi(list: List<LaunchItem>) {
+    private fun setSuccessfulState(list: List<LaunchItem>) {
         adapter.submitList(list)
+        changeListVisibility(VISIBLE)
+    }
+
+    private fun setLoadingState(loading: Boolean) {
+        if (loading) {
+            binding.progress.visibility = VISIBLE
+            binding.textFailedMessage.visibility = View.GONE
+        } else {
+            binding.progress.visibility = View.GONE
+        }
+    }
+
+    private fun setErrorState(error: String?) {
+        changeListVisibility(View.GONE)
+        with(binding.textFailedMessage) {
+            text = String.format(getString(R.string.text_error), error)
+            setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.ic_error, 0, 0)
+            visibility = VISIBLE
+        }
+    }
+
+    private fun setEmptyState() {
+        changeListVisibility(View.GONE)
+        with(binding.textFailedMessage) {
+            text = getString(R.string.text_empty)
+            setCompoundDrawablesRelativeWithIntrinsicBounds(0, R.drawable.ic_empty, 0, 0)
+            visibility = VISIBLE
+        }
+    }
+
+    private fun changeListVisibility(visibility: Int) {
+        binding.recycler.visibility = visibility
     }
 }
