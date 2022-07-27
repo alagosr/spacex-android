@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_margin"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation"
+    app:cardMaxElevation="@dimen/card_elevation"
+    app:cardPreventCornerOverlap="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/card_padding">
+
+        <ImageView
+            android:id="@+id/image_patch"
+            android:layout_width="@dimen/image_size"
+            android:layout_height="@dimen/image_size"
+            android:contentDescription="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:src="@drawable/ic_baseline_image_24" />
+
+        <TextView
+            android:id="@+id/text_mission_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_horizontal_margin"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:textSize="@dimen/text_header_size"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/text_rocket_name"
+            app:layout_constraintEnd_toStartOf="@+id/text_launch_date"
+            app:layout_constraintStart_toEndOf="@+id/image_patch"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="FalconSat" />
+
+        <TextView
+            android:id="@+id/text_rocket_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_horizontal_margin"
+            android:textSize="@dimen/text_normal_size"
+            app:layout_constraintBottom_toTopOf="@+id/text_rocket_type"
+            app:layout_constraintStart_toEndOf="@+id/image_patch"
+            app:layout_constraintTop_toBottomOf="@+id/text_mission_name"
+            tools:text="Rocket Falcon 1" />
+
+        <TextView
+            android:id="@+id/text_rocket_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_horizontal_margin"
+            android:textSize="@dimen/text_normal_size"
+            app:layout_constraintBottom_toTopOf="@+id/text_launch_site"
+            app:layout_constraintStart_toEndOf="@+id/image_patch"
+            app:layout_constraintTop_toBottomOf="@+id/text_rocket_name"
+            tools:text="Type Merlin A" />
+
+        <TextView
+            android:id="@+id/text_launch_site"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_padding"
+            android:gravity="center|end"
+            android:textAlignment="textEnd"
+            android:textSize="@dimen/text_normal_size"
+            app:drawableEndCompat="@drawable/ic_baseline_location_on_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/text_rocket_type"
+            app:layout_constraintTop_toBottomOf="@+id/text_rocket_type"
+            tools:text="Kwajalein Atoll Omelek Island" />
+
+        <TextView
+            android:id="@+id/text_flight_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_small_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/text_mission_name"
+            tools:ignore="SmallSp"
+            tools:text="Flight 132" />
+
+        <TextView
+            android:id="@+id/text_launch_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_small_size"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_flight_number"
+            tools:ignore="SmallSp"
+            tools:text="01/01/2022" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
