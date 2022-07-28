@@ -13,7 +13,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/card_padding">
+        android:padding="@dimen/general_top_padding">
 
         <ImageView
             android:id="@+id/image_patch"
@@ -66,7 +66,7 @@
             android:id="@+id/text_launch_site"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_padding"
+            android:layout_marginTop="@dimen/general_top_padding"
             android:gravity="center|end"
             android:textAlignment="textEnd"
             android:textSize="@dimen/text_normal_size"

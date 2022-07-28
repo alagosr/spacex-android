@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="image_size">100dp</dimen>
+    <dimen name="image_detail_size">200dp</dimen>
+    <dimen name="detail_top_padding">50dp</dimen>
     <dimen name="card_margin">10dp</dimen>
-    <dimen name="card_padding">10dp</dimen>
+    <dimen name="general_top_padding">10dp</dimen>
     <dimen name="card_corner_radius">8dp</dimen>
     <dimen name="card_elevation">5dp</dimen>
     <dimen name="text_horizontal_margin">10dp</dimen>
@@ -12,4 +14,5 @@
     <dimen name="text_small_size">8sp</dimen>
     <dimen name="text_failed_size">20sp</dimen>
     <dimen name="text_failed_horizontal_padding">10dp</dimen>
+    <dimen name="text_details_horizontal_padding">20dp</dimen>
 </resources>
