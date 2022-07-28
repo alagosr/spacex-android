@@ -1,10 +1,14 @@
 package com.flagos.spacex.domain
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
+@Entity
 @JsonClass(generateAdapter = true)
 data class LaunchItem(
+    @PrimaryKey(autoGenerate = true) val uid: Int = 0,
     @field:Json(name = "flight_number") val flightNumber: Int,
     @field:Json(name = "mission_name") val missionName: String,
     @field:Json(name = "launch_date_unix") val dateInUnix: Long,
