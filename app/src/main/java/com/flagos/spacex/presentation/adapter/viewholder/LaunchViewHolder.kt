@@ -10,7 +10,7 @@ import com.flagos.spacex.utils.loadImage
 
 class LaunchViewHolder(
     private val binding: LaunchItemBinding,
-    private val onClick: (String, String, String, Long) -> Unit
+    private val onClick: (String, String?, String, Long) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private lateinit var launchItem: LaunchItem
@@ -20,7 +20,7 @@ class LaunchViewHolder(
         binding.root.setOnClickListener {
             onClick.invoke(
                 launchItem.details.orEmpty(),
-                launchItem.links.missionPatch.orEmpty(),
+                launchItem.links.missionPatch,
                 launchItem.missionName,
                 launchItem.dateInUnix
             )

@@ -8,7 +8,8 @@ import com.flagos.spacex.databinding.LaunchItemBinding
 import com.flagos.spacex.domain.LaunchItem
 import com.flagos.spacex.presentation.adapter.viewholder.LaunchViewHolder
 
-class LaunchesAdapter(private val onClick: (String, String, String, Long) -> Unit) : ListAdapter<LaunchItem, LaunchViewHolder>(LaunchesDiff()) {
+class LaunchesAdapter(private val onClick: (String, String?, String, Long) -> Unit) :
+    ListAdapter<LaunchItem, LaunchViewHolder>(LaunchesDiff()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LaunchViewHolder {
         val inflater = LayoutInflater.from(parent.context)
