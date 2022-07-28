@@ -19,11 +19,7 @@ class LaunchesViewModel @Inject constructor(private val launchesRepository: Laun
     private var _onLaunchStateChanged = MutableLiveData<LaunchState>()
     val onLaunchStateChanged get() = _onLaunchStateChanged
 
-    init {
-        fetchLaunches()
-    }
-
-    private fun fetchLaunches() {
+    fun fetchLaunches() {
         val employees = launchesRepository.fetchLaunches(
             onStart = { _onLaunchStateChanged.postValue(OnLoading(true)) },
             onComplete = { _onLaunchStateChanged.postValue(OnLoading(false)) },

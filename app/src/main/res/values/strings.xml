@@ -5,4 +5,5 @@
     <string name="rocket_type">Type %s</string>
     <string name="text_error">An error has occurred\n\n%s</string>
     <string name="text_empty">There are no results</string>
+    <string name="text_launch_date_detail">Launched on %s</string>
 </resources>

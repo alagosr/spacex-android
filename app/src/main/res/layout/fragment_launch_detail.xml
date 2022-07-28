@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.LaunchDetailFragment">
+
+    <ImageView
+        android:id="@+id/image_patch_large"
+        android:layout_width="@dimen/image_detail_size"
+        android:layout_height="@dimen/image_detail_size"
+        android:layout_marginTop="@dimen/detail_top_padding"
+        android:contentDescription="@null"
+        android:src="@drawable/ic_baseline_image_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_mission_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/detail_top_padding"
+        android:textSize="@dimen/text_header_size"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_patch_large"
+        tools:text="FalconSat" />
+
+    <TextView
+        android:id="@+id/text_mission_details"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/general_top_padding"
+        android:gravity="center_horizontal"
+        android:paddingHorizontal="@dimen/text_details_horizontal_padding"
+        android:textSize="@dimen/text_sub_header_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_mission_name"
+        tools:text="Engine failure at 33 seconds and loss of vehicle" />
+
+    <TextView
+        android:id="@+id/text_mission_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/general_top_padding"
+        android:textSize="@dimen/text_sub_header_size"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_mission_details"
+        tools:text="Launched in 01/01/2022 at 18:30" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

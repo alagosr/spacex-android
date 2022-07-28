@@ -6,18 +6,25 @@ import com.flagos.spacex.R
 import com.flagos.spacex.databinding.LaunchItemBinding
 import com.flagos.spacex.domain.LaunchItem
 import com.flagos.spacex.utils.getLocalTimeFromUnix
-import com.squareup.picasso.Picasso
+import com.flagos.spacex.utils.loadImage
 
 class LaunchViewHolder(
     private val binding: LaunchItemBinding,
-    private val onClick: (String) -> Unit
+    private val onClick: (String, String, String, Long) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
 
     private lateinit var launchItem: LaunchItem
     private var context: Context = binding.root.context
 
     init {
-        binding.root.setOnClickListener { onClick.invoke(launchItem.details.orEmpty()) }
+        binding.root.setOnClickListener {
+            onClick.invoke(
+                launchItem.details.orEmpty(),
+                launchItem.links.missionPatch.orEmpty(),
+                launchItem.missionName,
+                launchItem.dateInUnix
+            )
+        }
     }
 
     fun bind(launch: LaunchItem) {
@@ -29,13 +36,7 @@ class LaunchViewHolder(
             textRocketName.text = String.format(context.getString(R.string.rocket_name), launch.rocket.name)
             textRocketType.text = String.format(context.getString(R.string.rocket_type), launch.rocket.type)
             textMissionName.text = launch.missionName
-
-            Picasso.get().load(launch.links.missionPatchSmall)
-                .fit()
-                .centerInside()
-                .placeholder(R.drawable.ic_baseline_image_24)
-                .error(R.drawable.ic_baseline_image_24)
-                .into(imagePatch)
+            imagePatch.loadImage(launch.links.missionPatchSmall)
         }
     }
 }

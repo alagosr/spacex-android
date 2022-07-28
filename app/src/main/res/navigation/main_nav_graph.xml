@@ -9,5 +9,36 @@
         android:id="@+id/launchesFragment"
         android:name="com.flagos.spacex.presentation.LaunchesFragment"
         android:label="fragment_launches"
-        tools:layout="@layout/fragment_launches" />
+        tools:layout="@layout/fragment_launches">
+        <action
+            android:id="@+id/action_launchesFragment_to_launchDetailFragment"
+            app:destination="@id/launchDetailFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/launchesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/launchDetailFragment"
+        android:name="com.flagos.spacex.presentation.LaunchDetailFragment"
+        android:label="fragment_launch_detail"
+        tools:layout="@layout/fragment_launch_detail">
+        <argument
+            android:name="missionPatch"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="missionName"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="missionDetails"
+            app:argType="string"
+            app:nullable="false" />
+        <argument
+            android:name="missionDate"
+            app:argType="long"
+            app:nullable="false" />
+    </fragment>
 </navigation>

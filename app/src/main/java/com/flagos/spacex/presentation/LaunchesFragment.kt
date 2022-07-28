@@ -47,14 +47,20 @@ class LaunchesFragment : Fragment() {
     }
 
     private fun initViews() {
-        adapter = LaunchesAdapter(onClick = {
-            //TODO: Navigate to launch detail.
+        adapter = LaunchesAdapter(onClick = { details, missionPath, missionName, launchDate ->
+            //TODO: Change parameter for a parcelable ui object of LaunchItem.
+            //TODO: Make shared element transition.
+            val action = LaunchesFragmentDirections.actionLaunchesFragmentToLaunchDetailFragment(missionPath, missionName, details, launchDate)
+            navController.navigate(action)
         })
         binding.recycler.adapter = adapter
     }
 
     private fun initObservers() {
-        viewModel.onLaunchStateChanged.observe(viewLifecycleOwner) { setUiState(it) }
+        with(viewModel) {
+            onLaunchStateChanged.observe(viewLifecycleOwner) { setUiState(it) }
+            fetchLaunches()
+        }
     }
 
     private fun setUiState(state: LaunchState) {
