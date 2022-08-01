@@ -23,7 +23,7 @@ class LaunchesServiceTest : ApiAbstract<LaunchesService>() {
 
     @Throws(IOException::class)
     @Test
-    fun fetchPokemonListFromNetworkTest() = runTest {
+    fun fetchLaunchesListFromNetworkTest() = runTest {
         enqueueResponse("/launches.json")
         val response = service.fetchLaunches()
         val responseBody = requireNotNull((response as ApiResponse.Success).data)

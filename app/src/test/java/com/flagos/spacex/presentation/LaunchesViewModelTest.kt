@@ -37,7 +37,7 @@ class LaunchesViewModelTest {
     }
 
     @Test
-    fun fetchPokemonListTest() = runTest {
+    fun fetchLaunchesListTest() = runTest {
         val mockData = MockUtil.mockLaunchItemList()
         whenever(launchesDao.getLaunches()).thenReturn(mockData)
 

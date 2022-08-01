@@ -34,7 +34,7 @@ class LaunchesRepositoryTest {
     }
 
     @Test
-    fun fetchPokemonListFromNetworkTest() = runTest {
+    fun fetchLaunchesListFromNetworkTest() = runTest {
         val mockData = MockUtil.mockLaunchItemList()
         whenever(launchesDao.getLaunches()).thenReturn(emptyList())
         whenever(launchesService.fetchLaunches()).thenReturn(ApiResponse.of { Response.success(mockData) })
@@ -55,7 +55,7 @@ class LaunchesRepositoryTest {
     }
 
     @Test
-    fun fetchPokemonListFromDatabaseTest() = runTest {
+    fun fetchLaunchesListFromDatabaseTest() = runTest {
         val mockData = MockUtil.mockLaunchItemList()
         whenever(launchesDao.getLaunches()).thenReturn(mockData)
 
