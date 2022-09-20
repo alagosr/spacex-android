@@ -16,7 +16,7 @@ object RepositoryModule {
 
     @Provides
     @ViewModelScoped
-    fun provideEmployeeDirectoryRepository(
+    fun provideLaunchesRepository(
         launchesClient: LaunchesClient,
         launchesDao: LaunchesDao,
         ioDispatcher: CoroutineDispatcher
